@@ -1,6 +1,7 @@
 package com.anjaniy.redditclonebackend.services;
 
 import com.anjaniy.redditclonebackend.dto.RegisterRequest;
+import com.anjaniy.redditclonebackend.models.NotificationEmail;
 import com.anjaniy.redditclonebackend.models.User;
 import com.anjaniy.redditclonebackend.models.VerificationToken;
 import com.anjaniy.redditclonebackend.repositories.UserRepo;
@@ -13,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.UUID;
+
+import static com.anjaniy.redditclonebackend.utilities.Constants.ACTIVATION_EMAIL;
 
 @Service
 @AllArgsConstructor
@@ -27,6 +30,11 @@ public class AuthService {
 //    @Autowired
     private final VerificationTokenRepo verificationTokenRepo;
 
+//    @Autowired
+    private final MailContentBuilder mailContentBuilder;
+//    @Autowired
+    private final MailService mailService;
+
     @Transactional
     public void signup(RegisterRequest registerRequest) {
         User user = new User();
@@ -39,6 +47,11 @@ public class AuthService {
         userRepo.save(user);
 
         String vToken = generateVerificationToken(user);
+
+        String message = mailContentBuilder.build("Thank you for signing up to Spring Reddit, please click on the below url to activate your account : "
+                + ACTIVATION_EMAIL + "/" + vToken);
+
+        mailService.sendMail(new NotificationEmail("Please Activate your account", user.getEmail(), message));
     }
 
     private String generateVerificationToken(User user) {

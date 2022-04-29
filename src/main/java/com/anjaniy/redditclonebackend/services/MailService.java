@@ -3,7 +3,6 @@ package com.anjaniy.redditclonebackend.services;
 import com.anjaniy.redditclonebackend.exceptions.SpringRedditException;
 import com.anjaniy.redditclonebackend.models.NotificationEmail;
 import lombok.AllArgsConstructor;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -19,7 +18,7 @@ public class MailService {
     private final JavaMailSender mailSender;
     private final MailContentBuilder mailContentBuilder;
 
-    public void sendEmail(NotificationEmail notificationEmail){
+    public void sendMail(NotificationEmail notificationEmail){
 
         MimeMessagePreparator messagePreparator = mimeMessage -> {
           MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
