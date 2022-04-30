@@ -1,6 +1,7 @@
 package com.anjaniy.redditclonebackend.services;
 
 import com.anjaniy.redditclonebackend.dto.RegisterRequest;
+import com.anjaniy.redditclonebackend.exceptions.SpringRedditException;
 import com.anjaniy.redditclonebackend.models.NotificationEmail;
 import com.anjaniy.redditclonebackend.models.User;
 import com.anjaniy.redditclonebackend.models.VerificationToken;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
+import java.util.Optional;
 import java.util.UUID;
 
 import static com.anjaniy.redditclonebackend.utilities.Constants.ACTIVATION_EMAIL;
@@ -32,6 +34,7 @@ public class AuthService {
 
 //    @Autowired
     private final MailContentBuilder mailContentBuilder;
+
 //    @Autowired
     private final MailService mailService;
 
@@ -51,7 +54,7 @@ public class AuthService {
         String message = mailContentBuilder.build("Thank you for signing up to Spring Reddit, please click on the below url to activate your account : "
                 + ACTIVATION_EMAIL + "/" + vToken);
 
-        mailService.sendMail(new NotificationEmail("Please Activate your account", user.getEmail(), message));
+        mailService.sendMail(new NotificationEmail("Please Activate Your Account", user.getEmail(), message));
     }
 
     private String generateVerificationToken(User user) {
@@ -62,5 +65,17 @@ public class AuthService {
 
         verificationTokenRepo.save(verificationToken);
         return vToken;
+    }
+
+    public void verifyAccount(String token) {
+        Optional<VerificationToken> verificationToken = verificationTokenRepo.findByToken(token);
+        fetchUserAndEnable(verificationToken.orElseThrow(() -> new SpringRedditException("Invalid Token")));
+    }
+
+    private void fetchUserAndEnable(VerificationToken verificationToken) {
+        String username = verificationToken.getUser().getUsername();
+        User user = userRepo.findByUsername(username).orElseThrow(() -> new SpringRedditException("User not found with name - " + username));
+        user.setEnabled(true);
+        userRepo.save(user);
     }
 }
