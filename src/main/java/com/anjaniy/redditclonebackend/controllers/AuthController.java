@@ -1,5 +1,6 @@
 package com.anjaniy.redditclonebackend.controllers;
 
+import com.anjaniy.redditclonebackend.dto.AuthenticationResponse;
 import com.anjaniy.redditclonebackend.dto.LoginRequest;
 import com.anjaniy.redditclonebackend.dto.RegisterRequest;
 import com.anjaniy.redditclonebackend.services.AuthService;
@@ -28,8 +29,9 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public void login(@RequestBody LoginRequest loginRequest){
-        authService.login(loginRequest);
+    public AuthenticationResponse login(@RequestBody LoginRequest loginRequest){
+        return authService.login(loginRequest);
+
     }
 
 }
