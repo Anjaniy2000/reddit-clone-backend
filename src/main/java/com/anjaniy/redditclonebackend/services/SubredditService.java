@@ -1,6 +1,8 @@
 package com.anjaniy.redditclonebackend.services;
 
 import com.anjaniy.redditclonebackend.dto.SubredditDto;
+import com.anjaniy.redditclonebackend.exceptions.SpringRedditException;
+import com.anjaniy.redditclonebackend.mappers.SubredditMapper;
 import com.anjaniy.redditclonebackend.models.Subreddit;
 import com.anjaniy.redditclonebackend.repositories.SubredditRepo;
 import lombok.AllArgsConstructor;
@@ -17,33 +19,31 @@ import java.util.stream.Collectors;
 public class SubredditService {
 
     private final SubredditRepo subredditRepo;
+    private final SubredditMapper subredditMapper;
 
     @Transactional
     public SubredditDto save(SubredditDto subredditDto){
-        Subreddit save = subredditRepo.save(mapSubredditDto(subredditDto));
+        Subreddit save = subredditRepo.save(subredditMapper.mapDtoToSubreddit(subredditDto));
         subredditDto.setId(save.getId());
         return subredditDto;
     }
 
-    private Subreddit mapSubredditDto(SubredditDto subredditDto) {
-        return Subreddit.builder().name(subredditDto.getName())
-                .description(subredditDto.getDescription())
-                .build();
-    }
 
     @Transactional(readOnly = true)
     public List<SubredditDto> getAllSubreddits() {
         return subredditRepo
                 .findAll()
                 .stream()
-                .map(this::mapToDto)
+                .map(subredditMapper::mapSubredditToDto)
                 .collect(Collectors.toList());
     }
 
-    private SubredditDto mapToDto(Subreddit subreddit) {
-        return SubredditDto.builder().name(subreddit.getName())
-                .id(subreddit.getId())
-                .numberOfPosts(subreddit.getPosts().size())
-                .build();
+
+    @Transactional(readOnly = true)
+    public SubredditDto getSubreddit(Long id) {
+        Subreddit subreddit = subredditRepo.findById(id)
+                .orElseThrow(() -> new SpringRedditException("Subreddit not found with id as" + id));
+
+        return subredditMapper.mapSubredditToDto(subreddit);
     }
 }
