@@ -29,19 +29,14 @@ import static com.anjaniy.redditclonebackend.utilities.Constants.ACTIVATION_EMAI
 @AllArgsConstructor
 public class AuthService {
 
-//    @Autowired
     private final PasswordEncoder passwordEncoder;
 
-//    @Autowired
     private final UserRepo userRepo;
 
-//    @Autowired
     private final VerificationTokenRepo verificationTokenRepo;
 
-//    @Autowired
     private final MailContentBuilder mailContentBuilder;
 
-//    @Autowired
     private final MailService mailService;
 
     private final AuthenticationManager authenticationManager;
@@ -96,5 +91,13 @@ public class AuthService {
         String token = jwtProvider.generateToken(authenticate);
         return new AuthenticationResponse(token, loginRequest.getUsername());
 
+    }
+
+    @Transactional(readOnly = true)
+    public User getCurrentUser() {
+        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.
+                getContext().getAuthentication().getPrincipal();
+        return userRepo.findByUsername(principal.getUsername())
+                .orElseThrow(() -> new SpringRedditException("User name not found - " + principal.getUsername()));
     }
 }
