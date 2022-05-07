@@ -27,7 +27,7 @@ public class Post {
     @Lob
     private String description;
 
-    private Long voteCount;
+    private Integer voteCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId", referencedColumnName = "userId")
@@ -38,4 +38,5 @@ public class Post {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id", referencedColumnName = "id")
     private Subreddit subreddit;
+
 }

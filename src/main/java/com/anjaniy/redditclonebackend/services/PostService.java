@@ -6,6 +6,7 @@ import com.anjaniy.redditclonebackend.exceptions.PostNotFoundException;
 import com.anjaniy.redditclonebackend.exceptions.SpringRedditException;
 import com.anjaniy.redditclonebackend.exceptions.SubredditNotFoundException;
 import com.anjaniy.redditclonebackend.mappers.PostMapper;
+import com.anjaniy.redditclonebackend.mappers.PostsMapper;
 import com.anjaniy.redditclonebackend.models.Post;
 import com.anjaniy.redditclonebackend.models.Subreddit;
 import com.anjaniy.redditclonebackend.models.User;
@@ -30,28 +31,28 @@ public class PostService {
 
     private final SubredditRepo subredditRepo;
     private final AuthService authService;
-    private final PostMapper postMapper;
+    private PostsMapper postsMapper;
     private final PostRepo postRepo;
     private final UserRepo userRepo;
 
     public void save(PostRequest postRequest) {
         Subreddit subreddit = subredditRepo.findByName(postRequest.getSubredditName())
                 .orElseThrow(() -> new SubredditNotFoundException(postRequest.getSubredditName()));
-        postRepo.save(postMapper.map(postRequest, subreddit, authService.getCurrentUser()));
+        postRepo.save(postsMapper.map(postRequest, subreddit, authService.getCurrentUser()));
     }
 
     @Transactional(readOnly = true)
     public PostResponse getPost(Long id) {
         Post post = postRepo.findById(id)
                 .orElseThrow(() -> new PostNotFoundException(id.toString()));
-        return postMapper.mapToDto(post);
+        return postsMapper.mapToDto(post);
     }
 
     @Transactional(readOnly = true)
     public List<PostResponse> getAllPosts() {
         return postRepo.findAll()
                 .stream()
-                .map(postMapper::mapToDto)
+                .map(postsMapper::mapToDto)
                 .collect(toList());
     }
 
@@ -60,13 +61,13 @@ public class PostService {
         Subreddit subreddit = subredditRepo.findById(subredditId)
                 .orElseThrow(() -> new SubredditNotFoundException(subredditId.toString()));
         List<Post> posts = postRepo.findAllBySubreddit(subreddit);
-        return posts.stream().map(postMapper::mapToDto).collect(toList());
+        return posts.stream().map(postsMapper::mapToDto).collect(toList());
     }
 
     @Transactional(readOnly = true)
     public List<PostResponse> getPostsByUsername(String username) {
         User user = userRepo.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
-        return postRepo.findByUser(user).stream().map(postMapper::mapToDto).collect(toList());
+        return postRepo.findByUser(user).stream().map(postsMapper::mapToDto).collect(toList());
     }
 }
