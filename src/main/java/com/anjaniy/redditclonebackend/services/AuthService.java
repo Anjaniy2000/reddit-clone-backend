@@ -12,6 +12,7 @@ import com.anjaniy.redditclonebackend.repositories.UserRepo;
 import com.anjaniy.redditclonebackend.repositories.VerificationTokenRepo;
 import com.anjaniy.redditclonebackend.security.JWTProvider;
 import lombok.AllArgsConstructor;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,7 +20,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
@@ -52,9 +52,8 @@ public class AuthService {
         user.setEmail(registerRequest.getEmail());
         user.setUsername(registerRequest.getUsername());
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
-        user.setCreateDate(Instant.now());
+        user.setCreated(Instant.now());
         user.setEnabled(false);
-
         userRepo.save(user);
 
         String vToken = generateVerificationToken(user);
@@ -117,5 +116,10 @@ public class AuthService {
                 .expiresAt(Instant.now().plusMillis(jwtProvider.getJwtExpirationInMillis()))
                 .username(refreshTokenRequest.getUsername())
                 .build();
+    }
+
+    public boolean isLoggedIn() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return !(authentication instanceof AnonymousAuthenticationToken) && authentication.isAuthenticated();
     }
 }

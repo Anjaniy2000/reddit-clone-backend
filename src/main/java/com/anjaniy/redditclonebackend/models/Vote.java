@@ -19,11 +19,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Builder
 public class Vote {
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     private Long voteId;
-
     private VoteType voteType;
-
     @NotNull
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "postId", referencedColumnName = "postId")

@@ -13,34 +13,34 @@ import java.util.List;
 import static org.springframework.http.ResponseEntity.status;
 
 @RestController
-@RequestMapping("/api/posts")
+@RequestMapping("/api/post")
 @AllArgsConstructor
 public class PostController {
 
     private final PostService postService;
 
-    @PostMapping
+    @PostMapping("/createPost")
     public ResponseEntity<Void> createPost(@RequestBody PostRequest postRequest) {
         postService.save(postRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping("/getAllPosts")
     public ResponseEntity<List<PostResponse>> getAllPosts() {
         return status(HttpStatus.OK).body(postService.getAllPosts());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<PostResponse> getPost(@PathVariable Long id) {
+    @GetMapping("/getPostById/{id}")
+    public ResponseEntity<PostResponse> getPostById(@PathVariable Long id) {
         return status(HttpStatus.OK).body(postService.getPost(id));
     }
 
-    @GetMapping("/by-subreddit/{id}")
+    @GetMapping("/getPostsBySubreddit/{id}")
     public ResponseEntity<List<PostResponse>> getPostsBySubreddit(Long id) {
         return status(HttpStatus.OK).body(postService.getPostsBySubreddit(id));
     }
 
-    @GetMapping("by-user/{name}")
+    @GetMapping("/getPostsByUsername/{name}")
     public ResponseEntity<List<PostResponse>> getPostsByUsername(String username) {
         return status(HttpStatus.OK).body(postService.getPostsByUsername(username));
     }
