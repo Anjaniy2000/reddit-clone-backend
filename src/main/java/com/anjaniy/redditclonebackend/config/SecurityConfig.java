@@ -1,17 +1,14 @@
 package com.anjaniy.redditclonebackend.config;
 
 import com.anjaniy.redditclonebackend.security.JWTAuthenticationFilter;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,16 +20,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UserDetailsService userDetailsService;
-    private final JWTAuthenticationFilter jwtAuthenticationFilter;
-    private static final String[] WHITELIST_ENDPOINTS = {"/api/auth/**",
-            "/api/subreddit/getAllSubreddits",
-            "/api/subreddit/getSubredditById/{id}",
-            "/api/post/getAllPosts",
-            "/api/post/getPostById/{id}",
-            "/api/post/getPostsBySubreddit/{id}",
-            "/api/post/getPostsByUsername/{name}"
-    };
+    @Autowired
+    private UserDetailsService userDetailsService;
+    @Autowired
+    private JWTAuthenticationFilter jwtAuthenticationFilter;
 
     @Override
     @Bean
@@ -44,10 +35,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable()
                 .authorizeRequests()
-                .antMatchers(WHITELIST_ENDPOINTS)
+                .antMatchers("/api/auth/**")
                 .permitAll()
-                .anyRequest()
-                .authenticated()
+                .antMatchers(HttpMethod.GET,"/api/subreddit/**")
+                .permitAll()
+                .antMatchers(HttpMethod.GET, "/api/posts/**")
+                .permitAll()
+                .antMatchers(HttpMethod.GET, "/api/comments/**")
+                .permitAll()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -62,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    PasswordEncoder passwordEncoder(){
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }

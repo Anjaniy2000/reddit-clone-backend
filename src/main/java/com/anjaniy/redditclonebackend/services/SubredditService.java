@@ -7,6 +7,7 @@ import com.anjaniy.redditclonebackend.models.Subreddit;
 import com.anjaniy.redditclonebackend.repositories.SubredditRepo;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,27 +19,32 @@ import static java.util.stream.Collectors.toList;
 @Slf4j
 public class SubredditService {
 
-    private final SubredditRepo subredditRepo;
-    private final SubredditMapper subredditMapper;
+    @Autowired
+    private SubredditRepo subredditRepository;
+    @Autowired
+    private SubredditMapper subredditMapper;
+
 
     @Transactional
     public SubredditDto save(SubredditDto subredditDto) {
-        Subreddit save = subredditRepo.save(subredditMapper.mapDtoToSubreddit(subredditDto));
+        Subreddit save = subredditRepository.save(subredditMapper.mapDtoToSubreddit(subredditDto));
         subredditDto.setId(save.getId());
         return subredditDto;
     }
 
     @Transactional(readOnly = true)
     public List<SubredditDto> getAll() {
-        return subredditRepo.findAll()
+        return subredditRepository.findAll()
                 .stream()
                 .map(subredditMapper::mapSubredditToDto)
                 .collect(toList());
     }
 
+    @Transactional(readOnly = true)
     public SubredditDto getSubreddit(Long id) {
-        Subreddit subreddit = subredditRepo.findById(id)
-                .orElseThrow(() -> new SpringRedditException("No subreddit found with ID - " + id));
+        Subreddit subreddit = subredditRepository.findById(id)
+                .orElseThrow(() -> new SpringRedditException("Subreddit not found with id " + id));
+
         return subredditMapper.mapSubredditToDto(subreddit);
     }
 }
