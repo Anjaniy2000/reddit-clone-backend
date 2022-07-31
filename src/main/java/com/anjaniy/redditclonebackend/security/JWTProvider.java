@@ -26,11 +26,14 @@ public class JWTProvider {
     @Value("${jwt.expiration.time}")
     private Long jwtExpirationInMillis;
 
+    @Value("${keystore_url}")
+    private String keystore_url;
+
     @PostConstruct
     public void init() {
         try {
             keyStore = KeyStore.getInstance("JKS");
-            InputStream resourceAsStream = getClass().getResourceAsStream("/redditKeystore.jks");
+            InputStream resourceAsStream = getClass().getResourceAsStream(keystore_url);
             keyStore.load(resourceAsStream, "Reddit".toCharArray());
         } catch (KeyStoreException | CertificateException | NoSuchAlgorithmException | IOException e) {
             throw new SpringRedditException("Exception occurred while loading keystore");
