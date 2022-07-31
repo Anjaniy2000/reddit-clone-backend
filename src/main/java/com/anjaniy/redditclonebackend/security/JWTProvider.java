@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.*;
 import java.security.cert.CertificateException;
-import java.sql.Date;
 import java.time.Instant;
 
 import static io.jsonwebtoken.Jwts.parser;
