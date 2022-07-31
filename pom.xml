@@ -14,7 +14,7 @@
 	<name>reddit-clone-backend</name>
 	<description>Reddit Clone By Anjaniy Salekar.</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
 	</properties>
 	<dependencies>
