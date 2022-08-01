@@ -25,34 +25,30 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
     private UserDetailsService userDetailsService;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request,
-                                    HttpServletResponse response,
-                                    FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+            throws ServletException, IOException {
 
-        String Jwt = getJwtFromRequest(request);
+        final String authorizationHeader = request.getHeader("Authorization");
+        String username = null;
+        String jwt = null;
 
-        if (StringUtils.hasText(Jwt) && jwtProvider.validateToken(Jwt)) {
-
-            String username = jwtProvider.getUsernameFromJwt(Jwt);
-
-            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails,
-                    null, userDetails.getAuthorities());
-            authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+            jwt = authorizationHeader.substring(7);
+            username = jwtProvider.extractUsername(jwt);
         }
-        filterChain.doFilter(request, response);
+        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-    }
+            UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
 
-    private String getJwtFromRequest(HttpServletRequest request) {
+            if (jwtProvider.validateToken(jwt, userDetails)) {
 
-        String bearerToken = request.getHeader("Authorization");
-
-        if(StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")){
-            return bearerToken.substring(7);
+                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
+                        userDetails, null, userDetails.getAuthorities());
+                usernamePasswordAuthenticationToken
+                        .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+            }
         }
-        return bearerToken;
+        chain.doFilter(request, response);
     }
 }
