@@ -15,7 +15,7 @@ import java.util.List;
 import static org.springframework.http.ResponseEntity.status;
 
 @RestController
-@RequestMapping("/api/posts")
+@RequestMapping("/posts")
 @AllArgsConstructor
 @Slf4j
 public class PostController {

@@ -17,7 +17,7 @@ import javax.validation.Valid;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 @AllArgsConstructor
 public class AuthController {
 
@@ -33,7 +33,7 @@ public class AuthController {
         return new ResponseEntity<>("User Registration Success", OK);
     }
 
-    @GetMapping("accountVerification/{token}")
+    @GetMapping("/accountVerification/{token}")
     public ResponseEntity<String> verifyAccount(@PathVariable String token) {
 
         authService.verifyAccount(token);
