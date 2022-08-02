@@ -46,9 +46,10 @@
 
 - Node - Dependencies (Frontend):
   - Bootstrap 4.0
-  - Thymeleaf
+  - TinyMCE
   - Ngx-Webstorage
   - Ngx-Toastr
   - Angular-Fontawesome
   - Fontawesome-Svg-Core
   - Free-Solid-Svg-Icons
+  - Protractor
