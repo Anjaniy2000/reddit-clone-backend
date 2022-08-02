@@ -32,6 +32,7 @@
 
 - Maven - Dependencies (Backend):
   - Spring Web
+  - Spring Security
   - Lombok
   - Spring Data JPA
   - PostgreSQL Driver
@@ -41,7 +42,6 @@
   - Java Mail Sender
   - JSON Web Token (jjwt-api, jjwt-impl, jjwt-jackson)
   - Thymeleaf
-  - Spring Security
   - Springdoc OpenApi
 
 - Node - Dependencies (Frontend):
