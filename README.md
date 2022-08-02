@@ -30,7 +30,7 @@
 
 <h2>Dependencies / Dev-Dependencies:</h2>
 
-- Maven-Dependencies:
+- Maven-Dependencies(Backend):
   - Spring Web
   - Lombok
   - Spring Data JPA
@@ -39,6 +39,12 @@
   - MapStruct
   - Spring Boot Starter Validation
   - Java Mail Sender
+  - JSON Web Token (jjwt-api, jjwt-impl, jjwt-jackson)
+  - Thymeleaf
+  - Spring Security
+  - Springdoc OpenApi
+
+- Node-Dependencies(Frontend):
   - JSON Web Token (jjwt-api, jjwt-impl, jjwt-jackson)
   - Thymeleaf
   - Spring Security
