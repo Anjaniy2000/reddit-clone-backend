@@ -18,3 +18,12 @@
   - Heroku (For Deployment)
   - Mailtrap (For Email Testing / Fake SMTP Server)
   - Swagger 3.0
+
+- Frontend:
+  - Angular
+  - TypeScript
+  - Node.Js
+  - NPM
+  - HTML
+  - CSS
+  - Bootstrap 4.0
