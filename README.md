@@ -22,7 +22,7 @@
 - Frontend:
   - Angular
   - TypeScript
-  - Node.Js
+  - Node.js
   - NPM
   - HTML
   - CSS
