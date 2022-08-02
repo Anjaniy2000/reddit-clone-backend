@@ -19,15 +19,6 @@
   - Mailtrap (For Email Testing / Fake SMTP Server)
   - Swagger 3.0
 
-- Frontend:
-  - Angular
-  - TypeScript
-  - Node.js
-  - NPM
-  - HTML
-  - CSS
-  - Bootstrap 4.0
-
 <h2>Dependencies / Dev-Dependencies:</h2>
 
 - Maven - Dependencies (Backend):
@@ -43,16 +34,6 @@
   - JSON Web Token (jjwt-api, jjwt-impl, jjwt-jackson)
   - Thymeleaf
   - Springdoc OpenApi
-
-- Node - Dependencies (Frontend):
-  - Bootstrap 4.0
-  - TinyMCE
-  - Ngx-Webstorage
-  - Ngx-Toastr
-  - Angular-Fontawesome
-  - Fontawesome-Svg-Core
-  - Free-Solid-Svg-Icons
-  - Protractor
   
 You Can Access The API Documentation [Here](https://reddit-clone-spring-boot.herokuapp.com/swagger-ui.html).
 
