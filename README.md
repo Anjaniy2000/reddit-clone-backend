@@ -54,4 +54,4 @@
   - Free-Solid-Svg-Icons
   - Protractor
   
-<p>You Can Access The API Documentation [here](https://reddit-clone-spring-boot.herokuapp.com/swagger-ui.html).
+You can access the api documentation [here](https://reddit-clone-spring-boot.herokuapp.com/swagger-ui.html).
