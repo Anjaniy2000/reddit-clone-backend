@@ -1,0 +1,44 @@
+# Reddit Clone API
+
+<h2>Project Live Link: https://reddit-clone-sb.herokuapp.com/api/swagger-ui/index.html</h2>
+
+<h2>Working Demonstration Video Link: </h2>
+
+<h2>Frontend (UI Part) Project Link: https://github.com/Anjaniy2000/reddit-clone-frontend-angular</h2>
+
+<h2>Project Summery:</h2>
+
+- Prepared A Clone of Famous Discussion Forum Called Reddit, With Spring boot & Angular.
+- It Has Features Such as User Can Login/Logout, Create Post, Create Subreddit, Use Subreddit, Comments on Various Posts & Upvote/Downvote Various Posts.
+
+<h2>Tech-Stack / Technologies:</h2>
+
+- Backend:
+  - Java 1.8
+  - Spring Boot
+  - PostgreSQL
+  - Heroku (For Deployment)
+  - Mailtrap (For Email Testing / Fake SMTP Server)
+  - Swagger 3.0
+
+<h2>Dependencies / Dev-Dependencies:</h2>
+
+- Maven - Dependencies (Backend):
+  - Spring Web
+  - Spring Security
+  - Lombok
+  - Spring Data JPA
+  - PostgreSQL Driver
+  - Spring Boot Dev Tools
+  - MapStruct
+  - Spring Boot Starter Validation
+  - Java Mail Sender
+  - JSON Web Token / JWT - Authentication (jjwt-api, jjwt-impl, jjwt-jackson)
+  - Thymeleaf
+  - Springdoc OpenApi
+  
+You Can Access The API Documentation [Here](https://reddit-clone-spring-boot.herokuapp.com/swagger-ui.html).
+
+You Can Configure Your Database, Hibernate And Email Functionality By Adding Properties Into [application.properties](https://github.com/amycardoso/spring-reddit-clone/blob/master/src/main/resources/application.properties).
+
+In This Application, Users Receive Account Activation Emails And Comment Notification Emails, For That Reason, We Need An SMTP Server To Send The Emails, We Can Use A Fake SMTP Server Called [MailTrap](https://mailtrap.io/).
