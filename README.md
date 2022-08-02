@@ -54,4 +54,4 @@
   - Free-Solid-Svg-Icons
   - Protractor
   
-<p>You Can Access The API Documentation Here: https://reddit-clone-sb.herokuapp.com/api/swagger-ui/index.html</p>
+<p>You Can Access The API Documentation [Here] (https://reddit-clone-sb.herokuapp.com/api/swagger-ui/index.html)
