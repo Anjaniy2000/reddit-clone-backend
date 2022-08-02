@@ -27,3 +27,19 @@
   - HTML
   - CSS
   - Bootstrap 4.0
+
+<h2>Dependencies / Dev-Dependencies:</h2>
+
+- Maven-Dependencies:
+  - Spring Web
+  - Lombok
+  - Spring Data JPA
+  - PostgreSQL Driver
+  - Spring Boot Dev Tools
+  - MapStruct
+  - Spring Boot Starter Validation
+  - Java Mail Sender
+  - JSON Web Token (jjwt-api, jjwt-impl, jjwt-jackson)
+  - Thymeleaf
+  - Spring Security
+  - Springdoc OpenApi
