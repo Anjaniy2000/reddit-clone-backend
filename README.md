@@ -4,6 +4,8 @@
 
 <h2>Working Demonstration Video Link: </h2>
 
+<h2>Frontend (UI Part) Project Link: https://github.com/Anjaniy2000/reddit-clone-frontend-angular</h2>
+
 <h2>Project Summery:</h2>
 
 - Prepared A Clone of Famous Discussion Forum Called Reddit, With Spring boot & Angular.
