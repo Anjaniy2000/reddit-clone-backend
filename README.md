@@ -53,8 +53,5 @@
   - Fontawesome-Svg-Core
   - Free-Solid-Svg-Icons
   - Protractor
-<h3>You can access the api documentation here.
-
-You can configure your database, hibernate and email functionality by adding properties to application.properties.
-
-In this application, users receive account activation emails and comment notification emails, for that reason, we need an SMTP server to send the emails, we can use a fake SMTP server called MailTrap.</h3>
+  
+<p>You Can Access The API Documentation Here: https://reddit-clone-sb.herokuapp.com/api/swagger-ui/index.html</p>
