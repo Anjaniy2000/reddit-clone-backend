@@ -30,7 +30,7 @@
 
 <h2>Dependencies / Dev-Dependencies:</h2>
 
-- Maven - Dependencies(Backend):
+- Maven - Dependencies (Backend):
   - Spring Web
   - Lombok
   - Spring Data JPA
@@ -44,7 +44,7 @@
   - Spring Security
   - Springdoc OpenApi
 
-- Node - Dependencies(Frontend):
+- Node - Dependencies (Frontend):
   - JSON Web Token (jjwt-api, jjwt-impl, jjwt-jackson)
   - Thymeleaf
   - Spring Security
