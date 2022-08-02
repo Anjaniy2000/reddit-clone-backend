@@ -34,9 +34,9 @@
   - Spring Boot Starter Validation
   - Java Mail Sender
   - JSON Web Token (jjwt-api, jjwt-impl, jjwt-jackson)
-    - jjwt-api
-    - jjwt-impl
-    - jjwt-jackson
+   - jjwt-api
+   - jjwt-impl
+   - jjwt-jackson
   - Thymeleaf
   - Springdoc OpenApi
   
