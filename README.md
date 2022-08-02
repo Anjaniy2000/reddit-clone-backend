@@ -33,7 +33,7 @@
   - MapStruct
   - Spring Boot Starter Validation
   - Java Mail Sender
-  - JSON Web Token (jjwt-api, jjwt-impl, jjwt-jackson)
+  - JSON Web Token / JWT - Authentication (jjwt-api, jjwt-impl, jjwt-jackson)
   - Thymeleaf
   - Springdoc OpenApi
   
