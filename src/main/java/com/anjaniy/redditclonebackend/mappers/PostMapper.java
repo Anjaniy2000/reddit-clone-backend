@@ -12,6 +12,9 @@ import org.mapstruct.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Optional;
 
+import static com.anjaniy.redditclonebackend.models.VoteType.DOWNVOTE;
+import static com.anjaniy.redditclonebackend.models.VoteType.UPVOTE;
+
 @Mapper(componentModel = "spring")
 public abstract class PostMapper {
 
@@ -21,6 +24,7 @@ public abstract class PostMapper {
     private VoteRepo voteRepo;
     @Autowired
     private AuthService authService;
+
 
     @Mapping(target = "createdDate", expression = "java(java.time.Instant.now())")
     @Mapping(target = "description", source = "postRequest.description")
@@ -34,6 +38,8 @@ public abstract class PostMapper {
     @Mapping(target = "userName", source = "user.username")
     @Mapping(target = "commentCount", expression = "java(commentCount(post))")
     @Mapping(target = "duration", expression = "java(getDuration(post))")
+    @Mapping(target = "upVote", expression = "java(isPostUpVoted(post))")
+    @Mapping(target = "downVote", expression = "java(isPostDownVoted(post))")
     public abstract PostResponse mapToDto(Post post);
 
     Integer commentCount(Post post) {
@@ -42,6 +48,14 @@ public abstract class PostMapper {
 
     String getDuration(Post post) {
         return TimeAgo.using(post.getCreatedDate().toEpochMilli());
+    }
+
+    boolean isPostUpVoted(Post post) {
+        return checkVoteType(post, UPVOTE);
+    }
+
+    boolean isPostDownVoted(Post post) {
+        return checkVoteType(post, DOWNVOTE);
     }
 
     private boolean checkVoteType(Post post, VoteType voteType) {
@@ -54,4 +68,5 @@ public abstract class PostMapper {
         }
         return false;
     }
+
 }
