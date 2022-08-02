@@ -6,5 +6,5 @@
 
 <h2>Project Summery:</h2>
 
-- Prepared A Simple Employee Management System Web App, With Spring Boot & Thymeleaf.
-- It Has All The CRUD Functionalities Such As Create Employee, Read All The Employees, Update Any Particular Employee & Delete Any Particular Employee.
+- Prepared A Clone of Famous Discussion Forum Called Reddit, With Spring boot & Angular.
+- It Has Features Such as User Can Login/Logout, Create Post, Create Subreddit, Use Subreddit, Comments on Various Posts & Upvote/Downvote Various Posts.
