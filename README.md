@@ -8,3 +8,13 @@
 
 - Prepared A Clone of Famous Discussion Forum Called Reddit, With Spring boot & Angular.
 - It Has Features Such as User Can Login/Logout, Create Post, Create Subreddit, Use Subreddit, Comments on Various Posts & Upvote/Downvote Various Posts.
+
+<h2>Tech-Stack / Technologies:</h2>
+
+- Backend:
+  - Java 1.8
+  - Spring Boot
+  - PostgreSQL
+  - Heroku (For Deployment)
+  - Mailtrap (For Email Testing / Fake SMTP Server)
+  - Swagger 3.0
