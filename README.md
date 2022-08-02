@@ -45,7 +45,10 @@
   - Springdoc OpenApi
 
 - Node - Dependencies (Frontend):
-  - JSON Web Token (jjwt-api, jjwt-impl, jjwt-jackson)
+  - Bootstrap 4.0
   - Thymeleaf
-  - Spring Security
-  - Springdoc OpenApi
+  - Ngx-Webstorage
+  - Ngx-Toastr
+  - Angular-Fontawesome
+  - Fontawesome-Svg-Core
+  - Free-Solid-Svg-Icons
