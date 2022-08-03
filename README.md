@@ -80,3 +80,7 @@ In This Application, Users Receive Account Activation Emails And Comment Notific
 <h3>View Profile : </h3>
 
 ![Screenshot](/src/main/resources/images/view-profile.PNG)
+
+<h3>Home (Without Login) : </h3>
+
+![Screenshot](/src/main/resources/images/view-profile.PNG)
