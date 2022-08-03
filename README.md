@@ -45,14 +45,18 @@ In This Application, Users Receive Account Activation Emails And Comment Notific
 
 <h2>Application Screenshots: </h2>
 
-<h3>Home: </h3>
+<h3>Home : </h3>
 
 ![Screenshot](/src/main/resources/images/home.PNG)
 
-<h3>Register User: </h3>
+<h3>Register User : </h3>
 
 ![Screenshot](/src/main/resources/images/register.PNG)
 
-<h3>Login User: </h3>
+<h3>Login User : </h3>
+
+![Screenshot](/src/main/resources/images/login.PNG)
+
+<h3>Posts / Feeds : </h3>
 
 ![Screenshot](/src/main/resources/images/login.PNG)
