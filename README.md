@@ -47,4 +47,4 @@ In This Application, Users Receive Account Activation Emails And Comment Notific
 
 <h3>Home: </h3>
 
-![Screenshot](/src/main/resources/images/home.png)
+![Screenshot] (/src/main/resources/images/home.PNG)
