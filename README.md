@@ -1,6 +1,6 @@
 # Reddit Clone API
 
-<h2>Project Live Link (Swagger-3.0 Documentation): https://reddit-clone-sb.herokuapp.com/api/swagger-ui/index.html</h2>
+<h2>Project Live Link (Swagger 3.0 Documentation): https://reddit-clone-sb.herokuapp.com/api/swagger-ui/index.html</h2>
 
 <h2>Working Demonstration Video Link: https://youtu.be/QhsgrZdpsGw</h2>
 
