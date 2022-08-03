@@ -44,3 +44,7 @@ You Can Configure Your Database, Hibernate And Email Functionality By Adding Pro
 In This Application, Users Receive Account Activation Emails And Comment Notification Emails, For That Reason, We Need An SMTP Server To Send The Emails, We Can Use A Fake SMTP Server Called [MailTrap](https://mailtrap.io/).
 
 <h2>Application Screenshots: </h2>
+
+<h3>Home: </h3>
+
+![Screenshot](/src/main/resources/images/home.png)
