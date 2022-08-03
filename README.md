@@ -76,3 +76,7 @@ In This Application, Users Receive Account Activation Emails And Comment Notific
 <h3>View Post : </h3>
 
 ![Screenshot](/src/main/resources/images/view-post.PNG)
+
+<h3>View Profile : </h3>
+
+![Screenshot](/src/main/resources/images/view-profile.PNG)
