@@ -42,3 +42,29 @@ You Can Access The API Documentation [Here](https://reddit-clone-spring-boot.her
 You Can Configure Your Database, Hibernate And Email Functionality By Adding Properties Into [application.properties](https://github.com/amycardoso/spring-reddit-clone/blob/master/src/main/resources/application.properties).
 
 In This Application, Users Receive Account Activation Emails And Comment Notification Emails, For That Reason, We Need An SMTP Server To Send The Emails, We Can Use A Fake SMTP Server Called [MailTrap](https://mailtrap.io/).
+
+<h2>Application Screenshots: </h2>
+
+<h3>Home : </h3>
+
+![Screenshot](/src/main/resources/images/home.PNG)
+
+<h3>Register User : </h3>
+
+![Screenshot](/src/main/resources/images/register.PNG)
+
+<h3>Login User : </h3>
+
+![Screenshot](/src/main/resources/images/login.PNG)
+
+<h3>Posts / Feeds : </h3>
+
+![Screenshot](/src/main/resources/images/posts-list.PNG)
+
+<h3>Create Subreddit : </h3>
+
+![Screenshot](/src/main/resources/images/create-subreddit.PNG)
+
+<h3>Create Post : </h3>
+
+![Screenshot](/src/main/resources/images/create-post.PNG)
