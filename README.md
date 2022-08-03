@@ -68,3 +68,7 @@ In This Application, Users Receive Account Activation Emails And Comment Notific
 <h3>Create Post : </h3>
 
 ![Screenshot](/src/main/resources/images/create-post.PNG)
+
+<h3>Create Post : </h3>
+
+![Screenshot](/src/main/resources/images/create-comment.PNG)
